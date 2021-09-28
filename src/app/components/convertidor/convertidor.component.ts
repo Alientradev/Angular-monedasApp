@@ -1,0 +1,60 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-convertidor',
+  templateUrl: './convertidor.component.html',
+  styleUrls: ['./convertidor.component.css']
+})
+export class ConvertidorComponent implements OnInit {
+
+  cantidad = 0;
+  tengo = "USD";
+  quiero = "EUR";
+  total = 0;
+
+  monedas: string[] = ['USD','EUR','JPY'];
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  convertir() {
+    switch(this.tengo){
+      case 'USD':
+        if(this.quiero === 'USD'){
+          this.total = this.cantidad;
+        }
+        if(this.quiero === 'EUR'){
+          this.total = this.cantidad * 0.85;
+        }
+        if(this.quiero === 'JPY'){
+          this.total = this.cantidad * 109.73;
+        }
+        break;
+      case 'EUR':
+        if(this.quiero === 'USD'){
+          this.total = this.cantidad * 1.18;
+        }
+        if(this.quiero === 'EUR'){
+          this.total = this.cantidad;
+        }
+        if(this.quiero === 'JPY'){
+          this.total = this.cantidad * 129.12;
+        }
+        break;
+        case 'JPY':
+          if(this.quiero === 'USD'){
+            this.total = this.cantidad * 0.0091;
+          }
+          if(this.quiero === 'EUR'){
+            this.total = this.cantidad * 0.0077;
+          }
+          if(this.quiero === 'JPY'){
+            this.total = this.cantidad;
+          }
+          break;
+    }
+  }
+
+}
